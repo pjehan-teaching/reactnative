@@ -1,0 +1,87 @@
+<section id="forms">
+
+    <section>
+        <h2>Formulaires</h2>
+    </section>
+
+    <section>
+        <h3>Composants HTML / React Native</h3>
+        <table>
+            <thead>
+            <tr>
+                <th>HTML</th>
+                <th>React Native</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <code class="language-html">&lt;input type="text"&gt;</code><br>
+                    <code class="language-html">&lt;textarea&gt;</code>
+                </td>
+                <td><code class="language-jsx">&lt;TextInput&gt;</code></td>
+            </tr>
+            <tr>
+                <td><code class="language-html">&lt;select&gt;</code></td>
+                <td><code class="language-jsx">&lt;Picker&gt;</code></td>
+            </tr>
+            <tr>
+                <td><code class="language-html">&lt;option&gt;</code></td>
+                <td><code class="language-jsx">&lt;Picker.Item&gt;</code></td>
+            </tr>
+            <tr>
+                <td><code class="language-html">&lt;input type="checkbox"&gt;</code></td>
+                <td><code class="language-jsx">&lt;Switch&gt;</code></td>
+            </tr>
+            <tr>
+                <td><code class="language-html">&lt;input type="radio"&gt;</code></td>
+                <td><code class="language-jsx">&lt;SegmentedControlIOS&gt;</code></td>
+            </tr>
+            <tr>
+                <td><code class="language-html">&lt;input type="date"&gt;</code></td>
+                <td>
+                    <code class="language-jsx">&lt;DatePickerIOS&gt;</code><br>
+                    <code class="language-jsx">&lt;DatePickerAndroid&gt;</code>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h3>TextInput</h3>
+        <p>Le composant <code class="language-jsx">&lt;TextInput&gt;</code> permet de gérer les saisies des utilisateurs :</p>
+        <pre><code class="language-jsx">&lt;TextInput onChangeText={text => this.setState({title: text})} value={this.state.title}/&gt;</code></pre>
+        <footer>
+            <a href="https://facebook.github.io/react-native/docs/textinput" class="info" target="_blank">TextInput</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Picker</h3>
+        <p>Le composant <code class="language-jsx">&lt;Picker&gt;</code> permet d'afficher une liste déroulante de choix.</p>
+        <p>Les choix sont affichés à l'aide du composant <code class="language-jsx">&lt;Picker.Item&gt;</code> :</p>
+        <pre><code class="language-jsx">&lt;Picker selectedValue={this.state.color} onValueChange={value => this.setState({color: value}) }&gt;
+  &lt;Picker.Item label="Rouge" value="red" /&gt;
+  &lt;Picker.Item label="Vert" value="green" /&gt;
+&lt;/Picker&gt;</code></pre>
+    </section>
+
+    <section>
+        <h3>Switch</h3>
+        <p>Le composant <code class="language-jsx">&lt;Switch&gt;</code> permet d'afficher un bouton On / Off :</p>
+        <pre><code class="language-jsx">&lt;Switch value={this.state.wifi} onValueChange={value => this.setState({wifi: value}) }&gt;</code></pre>
+    </section>
+
+    <section>
+        <h3>Package form builder</h3>
+        <p>Il existe des packages NPM permettant de gérer plus facilement la création et la gestion des formulaires :</p>
+        <ul>
+            <li><a href="https://www.npmjs.com/package/formik" target="_blank">formik</a></li>
+            <li><a href="https://www.npmjs.com/package/tcomb-form-native" target="_blank">tcomb-form-native</a></li>
+            <li><a href="https://www.npmjs.com/package/react-native-form" target="_blank">react-native-form</a></li>
+            <li><a href="https://www.npmjs.com/package/react-native-form-builder" target="_blank">react-native-form-builder</a></li>
+        </ul>
+    </section>
+
+</section>

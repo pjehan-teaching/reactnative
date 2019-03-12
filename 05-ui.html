@@ -1,0 +1,62 @@
+<section id="ui">
+
+    <section>
+        <h2>Interface utilisateur</h2>
+    </section>
+
+    <section>
+        <h3>Les composants View et Text</h3>
+        <p>Le composant <code class="language-jsx">&lt;View&gt;</code> est le conteneur le plus basique. Il permet d'afficher ses éléments enfants et de définir leur mise en page.</p>
+        <p>Le composant <code class="language-jsx">&lt;ScrollView&gt;</code> est un conteneur permettant à l'utilisateur de scroller.</p>
+        <p>Le composant <code class="language-jsx">&lt;Text&gt;</code> permet quant à lui d'afficher du texte et de définir sa mise en forme.</p>
+        <pre><code class="language-jsx">&lt;View&gt;
+  &lt;Text&gt;Hellow world!&lt;/Text&gt;
+&lt;/View&gt;</code></pre>
+    </section>
+
+    <section>
+        <h3>Gestion des styles</h3>
+        <p>Il n'existe pas de feuille de style pour gérer la mise en forme des composants.</p>
+        <p>Les styles sont définies dans des objets JavaScript via l'attribut <code class="language-js">style</code> et utilisent une syntaxe camelCase pour les propriétés (ex: fontSize)</p>
+        <p>Il est possible de définir l'ensemble des styles d'un composant en utilisant la fonction <code class="language-js">StyleSheet.create</code> :</p>
+        <pre><code class="language-jsx">const styles = StyleSheet.create({
+  red: {
+    color: 'red'
+  },
+  blue: {
+    color: 'blue'
+  }
+});
+
+&lt;Text style={styles.red}&gt;Texte rouge&lt;/Text&gt;</code></pre>
+    </section>
+
+    <section>
+        <h3>Positionnement</h3>
+        <p>Il est possible de définir la taille d'un composant en définissant les attributs <code class="language-js">height</code> et <code class="language-js">width</code>.</p>
+        <p>Il est également possible d'utiliser la propriété <code class="language-js">flex</code> dans les styles pour définir une taille en proportion.</p>
+        <footer>
+            <a href="https://facebook.github.io/react-native/docs/height-and-width" class="info" target="_blank">Flex ne fonctionne que si l'élément parent à une taille définie</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Liste de composants</h3>
+        <p>Il est possible d'afficher une liste de composants en utilisant le composant <code class="language-jsx">&lt;FlatList&gt;</code>. Ce composant permet d'afficher une liste de composants de manière uniforme.</p>
+        <p>Contraiement au composant <code class="language-jsx">&lt;ScrollView&gt;</code>, ce composant n'affiche que les composants visibles à l'écran ce qui permet d'optimiser les performances.</p>
+        <p>Il est également possible d'utiliser le composant <code class="language-jsx">&lt;SectionList&gt;</code> pour afficher une liste d'éléments organisés par sections.</p>
+        <footer>
+            <a href="https://facebook.github.io/react-native/docs/using-a-listview" class="info" target="_blank">Documentation ListView</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>UI Kit</h3>
+        <ul>
+            <li><a href="https://nativebase.io" target="_blank">NativeBase</a></li>
+            <li><a href="https://shoutem.github.io/ui" target="_blank">Shoutem</a></li>
+            <li><a href="https://akveo.github.io/react-native-ui-kitten" target="_blank">UI Kitten</a></li>
+        </ul>
+    </section>
+
+</section>
