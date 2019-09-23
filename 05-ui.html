@@ -5,6 +5,11 @@
     </section>
 
     <section>
+        <h3>Différences entre les OS</h3>
+        <img src="assets/images/ios-android-components.jpeg" alt="Différences composants">
+    </section>
+
+    <section>
         <h3>Les composants View et Text</h3>
         <p>Le composant <code class="language-jsx">&lt;View&gt;</code> est le conteneur le plus basique. Il permet d'afficher ses éléments enfants et de définir leur mise en page.</p>
         <p>Le composant <code class="language-jsx">&lt;ScrollView&gt;</code> est un conteneur permettant à l'utilisateur de scroller.</p>
@@ -48,6 +53,16 @@
         <footer>
             <a href="https://facebook.github.io/react-native/docs/using-a-listview" class="info" target="_blank">Documentation ListView</a>
         </footer>
+    </section>
+
+    <section>
+        <h2>Orientation</h2>
+        <p>Le module <code class="language-js">Dimension</code> permet de connaître les dimensions de l'écran.</p>
+        <p>Il est ainsi possible de savoir si l'écran est au format paysage (landscape) ou portrait :</p>
+        <pre><code class="language-js">import { Dimensions } from 'react-native';
+
+const {height, width} = Dimensions.get('window');
+const orientation = height > width ? 'portrait' : 'landscape';</code></pre>
     </section>
 
     <section>
