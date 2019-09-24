@@ -6,7 +6,7 @@
 
     <section>
         <h3>Différences entre les OS</h3>
-        <img src="assets/images/ios-android-components.jpeg" alt="Différences composants">
+        <img src="assets/images/ios-android-components.jpeg" alt="Différences composants" style="max-height: 500px;">
     </section>
 
     <section>
@@ -37,6 +37,19 @@
     </section>
 
     <section>
+        <h3>Android StatusBar</h3>
+        <p>Par défaut sur Android, l'application est affichée derrière la barre de status.</p>
+        <p>Il est possible de corriger cela en utilisant le composant <code class="language-js">StatusBar</code> de ReactNative :</p>
+        <pre><code class="language-js">import { StatusBar } from 'react-native';
+
+const styles = StyleSheet.create({
+  container: {
+    marginTop: StatusBar.currentHeight
+  },
+});</code></pre>
+    </section>
+
+    <section>
         <h3>Positionnement</h3>
         <p>Il est possible de définir la taille d'un composant en définissant les attributs <code class="language-js">height</code> et <code class="language-js">width</code>.</p>
         <p>Il est également possible d'utiliser la propriété <code class="language-js">flex</code> dans les styles pour définir une taille en proportion.</p>
@@ -47,9 +60,9 @@
 
     <section>
         <h3>Liste de composants</h3>
-        <p>Il est possible d'afficher une liste de composants en utilisant le composant <code class="language-jsx">&lt;FlatList&gt;</code>. Ce composant permet d'afficher une liste de composants de manière uniforme.</p>
-        <p>Contraiement au composant <code class="language-jsx">&lt;ScrollView&gt;</code>, ce composant n'affiche que les composants visibles à l'écran ce qui permet d'optimiser les performances.</p>
-        <p>Il est également possible d'utiliser le composant <code class="language-jsx">&lt;SectionList&gt;</code> pour afficher une liste d'éléments organisés par sections.</p>
+        <p>Il est possible d'afficher une liste de composants en utilisant le composant <code class="language-jsx">&lt;FlatList&gt;</code>. Ce composant permet d'afficher une liste de composants de manière uniforme en utilisant le <strong>lazy loading</strong>.</p>
+        <p>Il est également possible d'utiliser le composant <code class="language-jsx">&lt;SectionList&gt;</code> pour afficher une liste d'éléments organisés par sections (lazy loading).</p>
+        <p>Contraiement aux composants FlatList ou SectionList, <code class="language-jsx">&lt;ScrollView&gt;</code> affiche directement l'ensembles des composants de la liste ce qui peut impacter les performances de l'application.</p>
         <footer>
             <a href="https://facebook.github.io/react-native/docs/using-a-listview" class="info" target="_blank">Documentation ListView</a>
         </footer>
