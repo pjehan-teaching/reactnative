@@ -63,8 +63,11 @@
         <h3>Tab Navigator</h3>
         <p>Nous allons commencer par créer 2 écrans (composants React) que nous allons positionner dans le dossier "screens".</p>
         <p>Ensuite, nous allons créer un fichier MainTabNavigation.js qui va contenir la navigation principale de notre application.</p>
+        <pre><code class="language-shell">npm install react-navigation-stack react-navigation-tab</code></pre>
         <pre style="max-height: 300px;"><code class="language-jsx">import React from 'react';
 import {createAppContainer, createStackNavigator, createBottomTabNavigator} from "react-navigation";
+import {createStackNavigator} from "react-navigation-stack";
+import {createBottomTabNavigator} from "react-navigation-tab";
 import HomeScreen from "../screens/HomeScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 
@@ -100,6 +103,7 @@ export default createAppContainer(TabNavigator);</code></pre>
 
     <section>
         <h3>Switch Navigator</h3>
+        <pre><code class="language-shell">npm install react-navigation-switch</code></pre>
         <ul>
             <li>Affiche un écran à la fois</li>
             <li>Le state des écrans inactifs est réinitialisé</li>
@@ -117,6 +121,7 @@ export default createAppContainer(TabNavigator);</code></pre>
 
     <section>
         <h3>Stack Navigator</h3>
+        <pre><code class="language-shell">npm install react-navigation-stack</code></pre>
         <ul>
             <li>Affiche un écran à la fois</li>
             <li>Le state des écrans inactifs est maintenu et ils restent montés</li>
