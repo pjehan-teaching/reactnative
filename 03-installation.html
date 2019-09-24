@@ -70,4 +70,19 @@
         </footer>
     </section>
 
+    <section>
+        <h3>Fichier .env</h3>
+        <p>Il est possible d'utiliser un fichier .env pour configurer les variable d'environnement :</p>
+        <pre><code class="language-shell">npm install --save-dev babel-preset-expo babel-plugin-inline-dotenv</code></pre>
+        <p>Modifier ensuite le fichier .babelrc situé à la racine du projet :</p>
+        <pre><code class="language-js">{
+  "presets": ["babel-preset-expo"],
+  "plugins": ["inline-dotenv"]
+}</code></pre>
+        <p>Ajouter la ligne suivante dans le fichier .env :</p>
+        <pre><code class="language-shell">API_SERVER_IP=192.168.1.5</code></pre>
+        <p>Vous pourrez alors accéder à votre variable :</p>
+        <pre><code class="language-js">process.env.API_SERVER_IP</code></pre>
+    </section>
+
 </section>
