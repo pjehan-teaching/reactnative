@@ -1,0 +1,39 @@
+.reveal {
+
+    pre[class*="language-"] {
+        width: 100%;
+        box-sizing: border-box;
+        font-size: 0.6em;
+        &:not(.line-numbers) {
+            padding: 0.5em;
+        }
+        code {
+            padding: 0;
+        }
+    }
+
+    .platform-languages {
+        background-color: white;
+        margin-bottom: 1em;
+        border: 2px solid #657b83;
+    }
+
+    .platform-languages > .col:first-child {
+        border-right: 2px solid #657b83;
+    }
+
+    .platform-languages > .col:last-child {
+        border-left: 2px solid #657b83;
+    }
+
+    .platform-languages > .col {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .platform-languages > .col img {
+        max-height: 200px;
+    }
+
+}

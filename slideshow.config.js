@@ -1,5 +1,5 @@
 module.exports = {
-    name: 'ReactNative',
-    javascripts: ['assets/js/script.js'],
-    stylesheets: ['assets/css/style.css']
-}
+  name: 'React Native',
+  stylesheets: [],
+  javascripts: ['assets/js/script.js']
+};
