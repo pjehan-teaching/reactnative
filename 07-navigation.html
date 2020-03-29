@@ -16,9 +16,9 @@
     <section>
         <h3>React Navigation : Limitations</h3>
         <ul>
-            <li>Ne repecte pas le système de navigation d'iOS ou Android. Dans ce cas, il est préférable d'utiliser <a href="https://wix.github.io/react-native-navigation" target="_blank">React Native Navigation</a>.</li>
-            <li>Navigation statique (impossible d'ajouter ou de supprimer des éléments dynamiquement dans la navigation)</li>
-            <li>Problèmes avec les textes RTL, problèmes de performances...</li>
+            <li>Ne supporte pas l'ensemble des fonctionnalités de certains appareils (split-views, peek & pop...). Dans ce cas, il est préférable d'utiliser <a href="https://wix.github.io/react-native-navigation" target="_blank">React Native Navigation</a>.</li>
+            <li>Problèmes de performances en comparaison avec une application native</li>
+            <li>Problèmes avec les textes RTL</li>
         </ul>
         <footer>
             <a href="https://reactnavigation.org/docs/en/limitations.html" class="info" target="_blank">Limitations</a>
@@ -28,7 +28,8 @@
     <section>
         <h3>Installation</h3>
         <p><a href="https://reactnavigation.org" target="_blank">React Navigation</a> est un composant permettant de gérer la navigation dans un application React Native.</p>
-        <pre><code class="language-shell">npm install --save react-navigation react-native-gesture-handler react-native-reanimated react-native-screens</code></pre>
+        <pre><code class="language-shell">npm install @react-navigation/native</code></pre>
+        <pre><code class="language-shell">expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view</code></pre>
     </section>
 
     <section>
@@ -49,50 +50,49 @@
     </section>
 
     <section>
+        <h3>Conteneur</h3>
+        <p>Pour commencer, nous allons utiliser le composant <code class="language-js">NavigationContainer</code>.</p>
+        <p>Ce composant sera en charge de gérer l'architecture de notre navigation et son state.</p>
+        <p>En règle générale, ce composant doit être positionné à la racine de l'application dans le fichier App.js :</p>
+        <pre><code class="language-jsx">function App() {
+  return (
+    &lt;NavigationContainer&gt;
+
+    &lt;/NavigationContainer&gt;
+  );
+}</code></pre>
+        <footer>
+            <a href="https://reactnavigation.org/docs/app-containers/" class="info" target="_blank">App Container</a>
+        </footer>
+    </section>
+
+    <section>
         <h3>Tab Navigator</h3>
         <img src="assets/images/tab-navigator.gif" alt="Tab Navigator">
     </section>
 
     <section>
         <h3>Tab Navigator</h3>
-        <p>React Navigation utilise un composant généré à partir de la fonction <code class="language-js">createBottomTabNavigator</code> pour gérer un système de navigation avec historique.</p>
-        <p>La fonction <code class="language-js">createAppContainer</code> permet quant à elle de gérer la navigation de plus haut niveau d'une application et est utilisée sur les systèmes Android pour le bouton de retour.</p>
-    </section>
-
-    <section>
-        <h3>Tab Navigator</h3>
+        <pre><code class="language-shell">npm install @react-navigation/bottom-tabs</code></pre>
         <p>Nous allons commencer par créer 2 écrans (composants React) que nous allons positionner dans le dossier "screens".</p>
-        <p>Ensuite, nous allons créer un fichier MainTabNavigation.js qui va contenir la navigation principale de notre application.</p>
-        <pre><code class="language-shell">npm install react-navigation-stack react-navigation-tab</code></pre>
-        <pre style="max-height: 300px;"><code class="language-jsx">import React from 'react';
-import {createAppContainer} from "react-navigation";
-import {createStackNavigator} from "react-navigation-stack";
-import {createBottomTabNavigator} from "react-navigation-tab";
-import HomeScreen from "../screens/HomeScreen";
-import ProfileScreen from "../screens/ProfileScreen";
+        <p>Nous allons ensuite ajouter le code suivant dans le fichier App.js :</p>
+        <pre><code class="language-jsx">import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import HomeScreen from './screens/HomeScreen';
+import SettingsScreen from './screens/SettingsScreen';
 
-const HomeTab = createStackNavigator({
-  screen: HomeScreen
-});
-HomeTab.navigationOptions = {
-  title: 'Playgrounds'
-};
+const Tab = createBottomTabNavigator();
 
-const ProfileTab = createStackNavigator({
-  screen: ProfileScreen
-});
-ProfileTab.navigationOptions = {
-  title: 'Profile'
-};
-
-const TabNavigator = createBottomTabNavigator({
-  Home: HomeTab,
-  Profile: ProfileTab
-});
-
-export default createAppContainer(TabNavigator);</code></pre>
+return (
+    &lt;NavigationContainer&gt;
+        &lt;Tab.Navigator&gt;
+            &lt;Tab.Screen name="Home" component={HomeScreen} /&gt;
+            &lt;Tab.Screen name="Settings" component={SettingsScreen} /&gt;
+        &lt;/Tab.Navigator&gt;
+    &lt;/NavigationContainer&gt;
+);
+</code></pre>
         <footer>
-            <a href="https://reactnavigation.org/docs/en/bottom-tab-navigator.html" class="info" target="_blank">Il est possible de personnaliser chaque onglet</a>
+            <a href="https://reactnavigation.org/docs/tab-based-navigation" class="info" target="_blank">Tab Navigation</a>
         </footer>
     </section>
 
@@ -103,15 +103,31 @@ export default createAppContainer(TabNavigator);</code></pre>
 
     <section>
         <h3>Switch Navigator</h3>
-        <pre><code class="language-shell">npm install react-navigation-switch</code></pre>
+        <pre><code class="language-shell">npm install @react-navigation/stack</code></pre>
         <ul>
             <li>Affiche un écran à la fois</li>
             <li>Le state des écrans inactifs est réinitialisé</li>
             <li>Il n'est pas possible de revenir en arrière (pas d'historique)</li>
         </ul>
         <footer>
-            <a href="#" class="info">Utilisé typiquement pour le système d'authentification</a>
+            <a href="https://reactnavigation.org/docs/auth-flow/" class="info" target="_blank">Utilisé typiquement pour le système d'authentification</a>
         </footer>
+    </section>
+
+    <section>
+        <h3>Switch Navigator</h3>
+        <pre><code class="language-jsx">import { createStackNavigator } from '@react-navigation/stack';
+
+const Stack = createStackNavigator();
+
+return (
+    &lt;NavigationContainer&gt;
+      &lt;Stack.Navigator&gt;
+        &lt;Stack.Screen name="Home" component={HomeScreen} /&gt;
+        &lt;Stack.Screen name="Settings" component={SettingsScreen} /&gt;
+      &lt;/Stack.Navigator&gt;
+    &lt;/NavigationContainer&gt;
+  );</code></pre>
     </section>
 
     <section>
@@ -136,7 +152,7 @@ export default createAppContainer(TabNavigator);</code></pre>
             <li>Les utilisateurs peuvent ajouter ou retirer des éléments de la pile, remplacer l'élément en cours...</li>
         </ul>
         <footer>
-            <a href="#" class="info">Stack permet de gérer un historique et d'utiliser la fonction back()</a>
+            <a href="https://reactnavigation.org/docs/navigating/#going-back" class="info" target="_blank">Stack permet de gérer un historique et d'utiliser la fonction back()</a>
         </footer>
     </section>
 
@@ -151,19 +167,21 @@ export default createAppContainer(TabNavigator);</code></pre>
         <p>React Navigation permet aussi de passer des paramètres dans les routes :</p>
         <pre><code class="language-js">this.props.navigation.navigate('ProfileTab', { username: 'John Doe' })</code></pre>
         <p>Puis de les récupérer de la façon suivante :</p>
-        <pre><code class="language-js">this.props.navigation.getParam('username', 'no username')</code></pre>
+        <pre><code class="language-js">this.props.route.params.username</code></pre>
     </section>
 
     <section>
         <h3>Personnaliser le header</h3>
-        <p>Il est possible de personnaliser le header de l'application en ajoutant une propriété statique <code class="language-js">navigationOptions</code> :</p>
-        <pre><code class="language-js">class HomeScreen extends Component {
-
-  static navigationOptions = {
-    title: 'Home'
-  };</code></pre>
+        <p>Il est possible de personnaliser le header de l'application en ajoutant une propriété statique <code class="language-js">screenOptions</code> :</p>
+        <pre><code class="language-jsx">&lt;Stack.Navigator
+    screenOptions={{
+        headerStyle: { backgroundColor: '#f4511e' },
+        headerTintColor: '#fff',
+        headerTitleStyle: { fontWeight: 'bold' }
+    }}
+&gt;</code></pre>
         <footer>
-            <a href="https://reactnavigation.org/docs/en/headers.html" class="info" target="_blank">Personnaliser le header</a>
+            <a href="https://reactnavigation.org/docs/headers" class="info" target="_blank">Personnaliser le header</a>
         </footer>
     </section>
 
